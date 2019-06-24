@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import os, sys, time, pyglet, keyboard
 import tkinter as tk  # python 3
 from tkinter import font as tkfont  # python 3
@@ -47,8 +46,6 @@ class ConfigPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        showButton = tk.Button(self, text='Show all text', command=self.showEntries)
-        showButton.pack()
         addboxButton = tk.Button(self, text='<Add Timer>', command=self.addBox)
         addboxButton.pack()
         startButton = tk.Button(self, text='<Start Timer>', command=self.changePage)
@@ -84,9 +81,6 @@ class ConfigPage(tk.Frame):
         all_errors = []
         self.clear = True
         for number, (ent1, ent2, ent3) in enumerate(all_entries):
-            # min = False
-            # sec = False
-            # snd = False
             entry1 = int(ent1.get())
             if not entry1 == "" and entry1 >= 0:
                 print(number, "Entry1= ", entry1)
@@ -203,18 +197,14 @@ class TimerPage(tk.Frame):
             sys.stdout.flush()
             if minutes <= 9:
                 if seconds <= 9:
-                    self.label.config(text="\r0{minutes} : 0{seconds}".format(minutes=minutes, seconds=seconds),
-                                      font=('Verdana', 100, 'bold'))
+                    self.label.config(text="\r0{minutes} : 0{seconds}".format(minutes=minutes, seconds=seconds), font=('Verdana', 100, 'bold'))
                 else:
-                    self.label.config(text="\r0{minutes} : {seconds}".format(minutes=minutes, seconds=seconds),
-                                      font=('Verdana', 100, 'bold'))
+                    self.label.config(text="\r0{minutes} : {seconds}".format(minutes=minutes, seconds=seconds), font=('Verdana', 100, 'bold'))
             else:
                 if seconds <= 9:
-                    self.label.config(text="\r{minutes} : 0{seconds}".format(minutes=minutes, seconds=seconds),
-                                      font=('Verdana', 100, 'bold'))
+                    self.label.config(text="\r{minutes} : 0{seconds}".format(minutes=minutes, seconds=seconds), font=('Verdana', 100, 'bold'))
                 else:
-                    self.label.config(text="\r{minutes} : {seconds}".format(minutes=minutes, seconds=seconds),
-                                      font=('Verdana', 100, 'bold'))
+                    self.label.config(text="\r{minutes} : {seconds}".format(minutes=minutes, seconds=seconds), font=('Verdana', 100, 'bold'))
             self.update_idletasks()
             if seconds < 0:
                 minutes -= 1
